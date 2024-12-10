@@ -1,0 +1,88 @@
+Obesity | C0028754
+Morbid obesity | C0028756
+Truncal obesity | C4551560
+Pediatric Obesity | C2362324
+Simple obesity | C0451819
+Exogenous obesity | C1281429
+Obesity, Abdominal | C0311277
+Other obesity | C0348480
+Drug-induced obesity | C0348956
+Adolescent Obesity | C4317171
+Android obesity | C0342940
+Constitutional obesity | C2937224
+Obesity, Maternal | C0746977
+Hypothyroid obesity | C0271792
+Hypothalamic obesity | C0271885
+Lifelong obesity | C0267989
+Generalized obesity | C0342942
+Hypogonadal obesity | C0271523
+Infantile Obesity | C4553478
+Buffalo obesity | C0239194
+Hypertrophic obesity | C1260894
+Hyperinsulinar obesity | C0545039
+Peripheral obesity | C0424629
+Gynecoid obesity | C0342941
+Obesity, CTCAE | C1963185
+Gross obesity | C0857116
+Moderate obesity | C0694533
+Obesity, hypoplasmic | C0545041
+Obesity, hyperplasmic | C0545040
+Sarcopenic obesity | C4063061
+Hyperplastic obesity | C1532480
+Obesity, primary | C0149974
+Obesity cardiomyopathy | C4552322
+Obesity, transient | C5830321
+Obesity, mild | C1841613
+centrifugal obesity | C2026325
+secondary obesity | C2062945
+Polygenic Obesity | C4054170
+Iatrogenic Obesity | C4054748
+obesity; glandular | C1398735
+pituitary; obesity | C1400190
+Syndromic obesity | C5680938
+Genetic obesity | C5681294
+PECTORAL OBESITY | C0240674
+THIGH OBESITY | C0241373
+Class III obesity | C1556381
+Lower body obesity | C4759305
+obesity in diabetes | C2945676
+Adult-onset obesity | C0267990
+Hyperplastic-hypertrophic obesity | C2937223
+Class II obesity | C1556380
+Body mass index 30+ - obesity | C0424671
+Overweight and obesity | C1561826
+Class I obesity | C4476813
+OBESITY AND HYPOPIGMENTATION | C5774289
+Truncal obesity (recessive) | C4538693
+Truncal obesity (variable) | C3552691
+Obesity (older children) | C1862918
+Obesity (after infancy) | C3277018
+Obesity after puberty | C3277526
+Truncal obesity, mild | C1845451
+OBESITY, LATE-ONSET | C4016782
+Obesity, early-onset | C1833056
+Obesity by contributing factors | C1532611
+Early-onset severe obesity | C4013980
+OBESITY, MILD, EARLY-ONSET | C4016893
+Grade 3 Obesity, CTCAE | C5552857
+Grade 4 Obesity, CTCAE | C1556382
+symmetrical obesity (greater than 30% over) | C2039138
+Obesity by fat distribution pattern | C1532612
+Obesity due to SIM1 deficiency | C5191050
+Obesity due to CEP19 deficiency | C5190985
+Obesity by adipocyte growth pattern | C1532609
+Obesity due to pituitary disease | C5569015
+Obesity caused by energy imbalance | C4302408
+Truncal obesity developing in midchildhood | C4538566
+Obesity in females after puberty | C5543341
+Obesity, severe (onset from birth) | C5194520
+Overweight, obesity and other hyperalimentation (E65-E68) | C1561827
+obesity (more than 10% over ideal weight) | C2230143
+Other Obesity due to Excess Calories | C2874226
+OBESITY, SEVERE, AND TYPE II DIABETES | C4016768
+Onset of obesity from 6 months to 6 years | C1867874
+Obese abdomen | C0426650
+Obese class I | C3853264
+Obese class II | C3853263
+Type 2 diabetes mellitus in obese | C0271638
+Body mass index 40+ - severely obese | C1319441

@@ -1,0 +1,73 @@
+Substance Abuse Problems | C0740858
+Psychoactive substance abuse | C0033880
+substance abuse pregnancy | C0749115
+Maternal substance abuse | C3494673
+Substance Abuse, Other | C0236935
+Substance Abuse, Intravenous | C0038579
+Substance Abuse, Oral | C4505278
+continuous psychoactive substance abuse | C2104584
+episodic psychoactive substance abuse | C2104585
+unspecified psychoactive substance abuse | C2062764
+other drug substance abuse | C0848734
+Other psychoactive substance abuse | C2874789
+Drug abuse | C0013146
+Other Psychoactive Substance Abuse, Uncomplicated | C2874790
+Neonatal complications of substance abuse | C0854703
+psychoactive substance abuse with withdrawal | C5389862
+unspecified psychoactive substance abuse - uncomplicated | C3509183
+Alcohol or substance abuse disorder | C5570673
+psychoactive substance abuse with psychoactive substance-induced disorder | C3509432
+Drug Dependence | C1510472
+Neonatal complications of maternal substance abuse | C0852268
+psychoactive substance abuse with withdrawal, uncomplicated | C5389863
+psychoactive substance abuse with withdrawal delirium | C5389864
+unspecified psychoactive substance abuse with intoxication | C3509184
+Other psychoactive substance abuse with withdrawal | C5384681
+psychoactive substance abuse with psychoactive substance-induced psychotic disorder | C3509433
+psychoactive substance abuse with psychoactive substance-induced persisting dementia | C3509437
+psychoactive substance abuse with psychoactive substance-induced mood disorder | C3509188
+psychoactive substance abuse with psychoactive substance-induced sexual dysfunction | C3509439
+psychoactive substance abuse with psychoactive substance-induced anxiety disorder | C3509438
+psychoactive substance abuse with psychoactive substance-induced sleep disorder | C3509440
+SUBSTANCE ABUSE PREGNANCY POLYSUBSTANCE | C0749120
+SUBSTANCE ABUSE PREGNANCY LSD | C0749119
+SUBSTANCE ABUSE PREGNANCY ALCOHOL | C0749117
+SUBSTANCE ABUSE UNSPECIFIED AGENT | C0749124
+SUBSTANCE ABUSE PREGNANCY TOBACCO | C0749121
+SUBSTANCE ABUSE PREGNANCY COCAINE | C0749118
+Other Psychoactive Substance Abuse with Intoxication, Unspecified | C2874795
+Other Psychoactive Substance Abuse with Psychoactive Substance-Induced Sleep Disorder | C2874805
+Other Psychoactive Substance Abuse with Psychoactive Substance-Induced Anxiety Disorder | C2874803
+Other Psychoactive Substance Abuse with Psychoactive Substance-Induced Persisting Dementia | C2874802
+psychoactive substance abuse with psychoactive substance-induced persisting amnestic disorder | C3509436
+Other psychoactive substance abuse with psychoactive substance-induced mood disorder | C2874796
+Other psychoactive substance abuse with other psychoactive substance-induced disorder | C2874806
+Other psychoactive substance abuse with psychoactive substance-induced sexual dysfunction | C2874804
+Other psychoactive substance abuse with unspecified psychoactive substance-induced disorder | C2874807
+Other Psychoactive Substance Abuse with Withdrawal Delirium | C5384683
+Other Psychoactive Substance Abuse with Intoxication, Uncomplicated | C2874792
+Other Psychoactive Substance Abuse with Intoxication Delirium | C2874793
+Other Psychoactive Substance Abuse with Withdrawal, Uncomplicated | C5384682
+Other Psychoactive Substance Abuse with Withdrawal, Unspecified | C5384685
+Other Psychoactive Substance Abuse with Psychoactive Substance-Induced Psychotic Disorder, Unspecified | C2874800
+unspecified psychoactive substance abuse with intoxication delirium | C3509186
+unspecified psychoactive substance abuse with intoxication, uncomplicated | C3509185
+Other Psychoactive Substance Abuse with Other Disorder | C5786314
+Other Psychoactive Substance Abuse with Unspecified Disorder | C5786315
+Other Psychoactive Substance Abuse with Mood Disorder | C5786311
+Other Psychoactive Substance Abuse with Sexual Dysfunction | C5786313
+psychoactive substance abuse with psychoactive substance-induced psychotic disorder with delusions | C3509434
+psychoactive substance abuse with psychoactive substance-induced psychotic disorder with hallucinations | C3509435
+Other psychoactive substance abuse with psychoactive substance-induced persisting amnestic disorder | C2874801
+Chronic drug abuse | C0743244
+Episodic drug abuse | C1960597
+Drug abuse, continuous | C1960552
+psychoactive substance abuse with withdrawal with perceptual disturbance | C5389865
+psychoactive substance abuse with intoxication with perceptual disturbance | C3509187
+Other Psychoactive Substance Abuse with Persisting Amnestic Disorder | C5786312
+Other Psychoactive Substance Abuse with Psychoactive Substance-Induced Psychotic Disorder with Delusions | C2874798
+Other Psychoactive Substance Abuse with Psychoactive Substance-Induced Psychotic Disorder with Hallucinations | C2874799
+Other Psychoactive Substance Abuse with Withdrawal with Perceptual Disturbance | C5384684
+Other Psychoactive Substance Abuse with Intoxication with Perceptual Disturbance | C2874794
+Abuse of synthetic cathinone | C4546258
+Synthetic cannabinoid abuse | C4545057
