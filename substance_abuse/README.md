@@ -78,6 +78,8 @@ details [here](https://github.com/kpwhri/mml_utils/tree/master/examples/phenorm#
 
 Now the output format must be created.
 
+Here's an example that assumes everything is positive (though this should be treated more as pseudo-code).
+
 ```python
 import pandas as pd
 from datetime import date  # for generating pipeline id
@@ -94,6 +96,7 @@ df = df[df['any_cui'] > 0][['docid', 'any_cui']]
 # map to FE table output
 df['Confidence'] = 'N'  # not assessed
 df['FE_CodeType'] = 'UC'  # UMLS CUI
+df['Feature_Status'] = 'A'  # assume all CUIs are affirme
 df['Feature'] = 'C0740858'  # https://uts.nlm.nih.gov/uts/umls/concept/C0740858
   # create unique pipeline id based on current year
 pipeline_id = int(str(hash(f'UC-C0740858-{date.today().year}'))[-8:])

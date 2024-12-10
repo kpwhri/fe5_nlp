@@ -21,7 +21,14 @@ Identify obesity using predefined CUIs (or BMI). [details](obesity/README.md)
 Steps:
 
 * Use a UMLS-based NLP concept extraction tool (e.g., cTAKES, MetaMap, MetaMapLite)
-* Limit based on concepts in [obesity/cuis.txt](obesity/cuis.txt) 
+* Limit based on concepts in [obesity/cuis.txt](obesity/cuis.txt)
+
+#### Output
+
+Results are defined as Z-codes to allow greater specificity where structured data may be available.
+
+* NLP: `Z683`
+* Structured: [see file](obesity/zcodes.csv)
 
 ### Substance Abuse
 
@@ -32,50 +39,93 @@ Steps:
 * Use a UMLS-based NLP concept extraction tool (e.g., cTAKES, MetaMap, MetaMapLite)
 * Limit based on concepts in [substance_abuse/cuis.txt](substance_abuse/cuis.txt)
 
+#### Output
+
+| Variable       | Substance Abuse |
+|----------------|-----------------|
+| Feature        | C0740858        |
+| FE_CodeType    | UC              |
+| Feature_Status | A / N           |
+| Confidence     | N               |
+
 ### Anaphylaxis
 
-Using Phenorm to identify anaphylaxis cases. For more details, including Phenorm post-processing to the FE table, see [README](anaphylaxis/README.md).
+Using Phenorm to identify anaphylaxis cases. For more details, including Phenorm post-processing to the FE table,
+see [README](anaphylaxis/README.md).
 
-The original work for this algorithm is at the [Sentinel Scalable NLP repo](https://github.com/kpwhri/Sentinel-Scalable-NLP?tab=readme-ov-file#prediction-modeling-quick-start).
+The original work for this algorithm is at
+the [Sentinel Scalable NLP repo](https://github.com/kpwhri/Sentinel-Scalable-NLP?tab=readme-ov-file#prediction-modeling-quick-start).
+
+#### Output
+
+| Variable       | Anaphylaxis |
+|----------------|-------------|
+| Feature        | C0002792    |
+| FE_CodeType    | UC          |
+| Feature_Status | A           |
+| Confidence     | N / ?       |
 
 ### History of Suicide Attempt
 
-The history of suicide attempt/self-harm concept is intended to be summarized at the patient-date level (but see [konsepy limitation](#konsepy-and-patient-date-level)). This is not strictly true, as the family history of suicide/self-harm concept could co-occur with a personal history of suicide/self-harm.
+The history of suicide attempt/self-harm concept is intended to be summarized at the patient-date level (but
+see [konsepy limitation](#konsepy-and-patient-date-level)). This is not strictly true, as the family history of
+suicide/self-harm concept could co-occur with a personal history of suicide/self-harm.
 
 Steps:
 
 * Prepare the [prerequisites for `konsepy`](https://github.com/kpwhri/fe5_konsepy?tab=readme-ov-file#prerequisites)
 * Run the `suicide_attempt` pipeline:
-  * `python src/run_concept.py --input-files sample/corpus.csv --outdir out --id-label studyid --concept suicide_attempt`
+    *
+  `python src/run_concept.py --input-files sample/corpus.csv --outdir out --id-label studyid --concept suicide_attempt`
 * Run the post-processing pipeline:
-  * `python src/postprocess_hx_attempted_suicide.py --infile out/notes_category_counts.csv`
+    * `python src/postprocess_hx_attempted_suicide.py --infile out/notes_category_counts.csv`
 
+#### Output
+
+| Variable       | Hx Suicide Attempt |
+|----------------|--------------------|
+| Feature        | C0455507           |
+| FE_CodeType    | UC                 |
+| Feature_Status | A / N / X          |
+| Confidence     | N                  |
 
 ### Smoking Status
 
-The smoking status concept is intended to be summarized at the patient-date level (but see [konsepy limitation](#konsepy-and-patient-date-level)).
+The smoking status concept is intended to be summarized at the patient-date level (but
+see [konsepy limitation](#konsepy-and-patient-date-level)).
 
 Steps:
 
 * Prepare the [prerequisites for `konsepy`](https://github.com/kpwhri/fe5_konsepy?tab=readme-ov-file#prerequisites)
 * Run the `smoking` pipeline:
-  * `python src/run_concept.py --input-files sample/corpus.csv --outdir out --id-label studyid --concept smoking`
+    * `python src/run_concept.py --input-files sample/corpus.csv --outdir out --id-label studyid --concept smoking`
 * Run the post-processing pipeline:
-  * `python src/postprocess_smoking.py --infile out/notes_category_counts.csv`
+    * `python src/postprocess_smoking.py --infile out/notes_category_counts.csv`
 
+#### Output
+
+| Variable       | Smoker    | Never    |
+|----------------|-----------|----------|
+| Feature        | C0337664  | C0337672 |
+| FE_CodeType    | UC        | UC       |
+| Feature_Status | A / N / H | A        |
+| Confidence     | N         | N        |
 
 ## Footnotes
 
 ### `konsepy` and Patient-date Level
 
-Since `konsepy` does not have a note date variable with which to summarize the information, summarization in the postprocessor occurs at whatever level csv is supplied to `postprocess_*.py`. E.g., supplying `notes_category_counts.csv` will result in note-level summarization, whereas `mrn_category_counts.csv` will result in mrn/patient-level summariation.
+Since `konsepy` does not have a note date variable with which to summarize the information, summarization in the
+postprocessor occurs at whatever level csv is supplied to `postprocess_*.py`. E.g., supplying
+`notes_category_counts.csv` will result in note-level summarization, whereas `mrn_category_counts.csv` will result in
+mrn/patient-level summariation.
 
-To get patient-date level summarization, the output file `notes_category_counts.csv` must be grouped at the note date level. This can be accomplished by the following Python code (intended as pseudo-code):
+To get patient-date level summarization, the output file `notes_category_counts.csv` must be grouped at the note date
+level. This can be accomplished by the following Python code (intended as pseudo-code):
 
 ```python
 """Make `notes_category_counts` into patient-date level summarization."""
 import pandas as pd  # pip install pandas
-
 
 konsepy_output = pd.read_csv('notes_category_counts.csv')  # columns: [mrn, note_id, ...]
 metadata = pd.read_csv('metadata.csv')  # columns: [note_id, note_date]

@@ -62,6 +62,7 @@ df = df[df['result'] == 1][['Obs_ID', 'Confidence']]
 
 # map to FE table output
 df['FE_CodeType'] = 'UC'  # UMLS CUI
+df['Feature_Status'] = 'A'  # affirmed
 df['Feature'] = 'C0002792'  # https://uts.nlm.nih.gov/uts/umls/concept/C0002792
 pipeline_id = int(str(hash(f'UC-C0002792-{date.today().year}'))[-8:])  # create unique pipeline id based on current year
 df['PipelineID'] = pipeline_id

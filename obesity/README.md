@@ -94,6 +94,7 @@ df = df[df['any_cui'] > 0][['docid', 'any_cui']]
 # map to FE table output
 df['Confidence'] = 'N'  # not assessed
 df['FE_CodeType'] = '10'  # UMLS CUI
+df['Feature_Status'] = 'A'  # affirmed
 df['Feature'] = 'Z683'  # https://www.icd10data.com/ICD10CM/Codes/Z00-Z99/Z68-Z68/Z68-
   # create unique pipeline id based on current year
 pipeline_id = int(str(hash(f'10-Z683-{date.today().year}'))[-8:])
