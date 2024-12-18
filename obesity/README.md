@@ -86,7 +86,7 @@ If you have run `mml_utils`, use the included `parse_to_fe_table.py` to create t
 * Feature_dt = ''
 * FeatureID = 'defined at feature table level'
           
-Here is some pseudocode to help build the table:
+Here is some Python-like pseudocode to help build the table (assuming cTAKES output):
 
 ```python
 
