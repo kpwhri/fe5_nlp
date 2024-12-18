@@ -2,6 +2,8 @@
 
 Identify substance abuse using predefined CUIs.
 
+
+
 ## Steps
 
 * Use a UMLS-based NLP concept extraction tool (e.g., cTAKES, MetaMap, MetaMapLite)
@@ -68,56 +70,80 @@ CUIs should be retained.
 To do this will `mml_utils`, only the output file type is of importance (see
 details [here](https://github.com/kpwhri/mml_utils/tree/master/examples/phenorm#extracting-cuis)):
 
-*
-`mml-extract-mml C:\inputdir1 C:\inputdir2 --outdir out --cui-file cuis.txt --output-format mmi|json|xmi [--output-directory C:\outputxmi]`
-  * Only include `--output-directory` if it's different than `C:\inputdir` (e.g., metamaplite writes to the same directory)
+* `mml-extract-mml C:\inputdir1 C:\inputdir2 --outdir out --cui-file cuis.txt --extract-format mmi|json|xmi [--extract-directory C:\outputxmi]`
+  * This works for cTAKES (`xmi`), MetaMap (`mmi` or `json`), and MetaMapLite (`mmi` or `json`) result files
+  * Only include `--extract-directory` if it's different than `C:\inputdir` (e.g., metamaplite writes to the same directory)
     * Add the `--cui-file` to limit the processed CUIs to only those that are of interest (e.g., `substance_abuse/cuis.txt`)
     * Add `--exclude-negated` to only look at positively-asserted 
 
 ## Step 4: Creating FE Table
-
 Now the output format must be created.
 
-Here's an example that assumes everything is positive (though this should be treated more as pseudo-code).
+If you have run `mml_utils`, use the included `parse_to_fe_table.py` to create the table as a CSV file. Several variables/columns/fields will need to be added from other sources:
+
+* ProviderID = '.U.'
+* EncounterID = '.U.'
+* PatID = '.U.'
+* Feature_dt = ''
+* FeatureID = 'defined at feature table level'
+          
+Here is some pseudocode to help build the table:
 
 ```python
-import pandas as pd
-from datetime import date  # for generating pipeline id
 
-df = pd.read_csv('out/cuis_by_doc.csv')
+primary_cui = 'C0740858'
+family_history_cui = 'C1397159'
+label = 'substance_abuse'
 
-# sum all the CUI variables to see which notes have output (they all start with 'C')
-cui_columns = [col for col in df.columns if col.startswith('C')]
-df['any_cui'] = df[cui_columns].sum()
+results = []
+for encounter in encounters:
+    # Primary CUI
+    if encounter.has('polarity' == 1 and 'conditional' == 'false' and 'subject' == 'patient' and 'historyOf' == 0):
+        results.append({'Feature': primary_cui, 'Feature_Status': 'A'})  # Active 
+    elif encounter.has('polarity' == -1 and 'conditional' == 'false' and 'subject' == 'patient' and 'historyOf' == 0):
+        results.append({'Feature': primary_cui, 'Feature_Status': 'N'})  # Negated
+    elif encounter.has('polarity' == 1 and 'conditional' == 'false' and 'subject' == 'patient' and 'historyOf' == 1):
+        results.append({'Feature': primary_cui, 'Feature_Status': 'H'})  # Historical 
+    elif encounter.has('polarity' == 1 and 'conditional' == 'false' and 'subject' != 'patient' and 'historyOf' == 0):
+        results.append({'Feature': primary_cui, 'Feature_Status': 'X'})  # Other Subject
+    else:
+        results.append({'Feature': primary_cui, 'Feature_Status': 'U'})  # Else: unknown
+        
+    # Family History CUI
+    if encounter.has('polarity' == 1 and 'conditional' == 'false' and 'subject' == 'family_member' and 'historyOf' == 0):
+        results.append({'Feature': family_history_cui, 'Feature_Status': 'A'})  # Active 
+    elif encounter.has('polarity' == -1 and 'conditional' == 'false' and 'subject' == 'family_member' and 'historyOf' == 0):
+        results.append({'Feature': family_history_cui, 'Feature_Status': 'N'})  # Negated
+    elif encounter.has('polarity' == 1 and 'conditional' == 'false' and 'subject' == 'family_member' and 'historyOf' == 1):
+        results.append({'Feature': family_history_cui, 'Feature_Status': 'H'})  # Historical 
+    else:
+        results.append({'Feature': family_history_cui, 'Feature_Status': 'U'})  # Else: unknown
 
-# limit to only those with at least one cui
-df = df[df['any_cui'] > 0][['docid', 'any_cui']]
+# add missing variables
+pipeline_id = int(str(hash(f'UC-{label}-{date.today().year}'))[-8:])
+for result in results:
+    # map to FE table output
+    result['Confidence'] = 'N'  # not assessed
+    result['FE_CodeType'] = 'UC'  # UMLS CUI
+    # create unique pipeline id based on current year
+    result['PipelineID'] = pipeline_id
 
-# map to FE table output
-df['Confidence'] = 'N'  # not assessed
-df['FE_CodeType'] = 'UC'  # UMLS CUI
-df['Feature_Status'] = 'A'  # assume all CUIs are affirme
-df['Feature'] = 'C0740858'  # https://uts.nlm.nih.gov/uts/umls/concept/C0740858
-  # create unique pipeline id based on current year
-pipeline_id = int(str(hash(f'UC-C0740858-{date.today().year}'))[-8:])
-df['PipelineID'] = pipeline_id
-
-# TODO: additional variables must come from other sources which lack a pre-defined shape
-# df['ProviderID'] = '.U.'
-# df['EncounterID'] = '.U.'
-# df['PatID'] = '.U.'
-# df['Feature_dt'] = ''
-# df['FeatureID'] = 'defined at feature table level'
+    # TODO: additional variables must come from other sources which lack a pre-defined shape
+    # result['ProviderID'] = '.U.'
+    # result['EncounterID'] = '.U.'
+    # result['PatID'] = '.U.'
+    # result['Feature_dt'] = ''
+    # result['FeatureID'] = 'defined at feature table level'
 
 # output
-df.to_csv('fe_feature_table.csv', index=False)
+pd.DataFrame.from_records(results).to_csv('fe_feature_table.csv', index=False)
 
 pipeline_df = pd.DataFrame.from_records([{
-  'id': pipeline_id,
-  'name': 'metamaplite-substance_abuse',
-  'run_date': date.today().strftime('%Y-%m-%d'),
-  'description': f'Identifying substance abuse CUIs with MetaMapLite',
-  'source': 'https://github.com/kpwhri/fe5_nlp/substance_abuse',
+    'id': pipeline_id,
+    'name': f'{label}',
+    'run_date': date.today().strftime('%Y-%m-%d'),
+    'description': f'Identifying {label} CUIs',
+    'source': 'https://github.com/kpwhri/fe5_nlp/substance_abuse',
 }])
 pipeline_df.to_csv('fe_pipeline_table.csv', index=False)
 ```

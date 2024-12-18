@@ -14,6 +14,15 @@ The five features (and tools/methods):
 
 ## Algorithm Descriptions
 
+The following provides a brief, high-level description of each algorithm. More details can be found via links or
+accessing a README file in the relevant folders.
+
+Some notes:
+
+* Any encounter/note that *is* evaluated for a particular feature without results for that feature should be assigned a
+  feature status of `'U'` (i.e., Unknown). This is to help with the assigning of a denominator.
+* The same CUI can be output by an algorithm to provide other details (e.g., family history).
+
 ### Obesity/BMI
 
 Identify obesity using predefined CUIs (or BMI). [details](obesity/README.md)
@@ -25,9 +34,18 @@ Steps:
 
 #### Output
 
-Results are defined as Z-codes to allow greater specificity where structured data may be available.
+For those with existing structured data, results are defined as Z-codes to allow greater specificity. For NLP results,
+the UMLS CUI `C0028754` is used.
 
-* NLP: `Z683`
+* NLP:
+
+| Variable       | Obesity           | FH: Obesity   |
+|----------------|-------------------|---------------|
+| Feature        | C0028754          | C0455373      |
+| FE_CodeType    | UC                | UC            |
+| Feature_Status | A / N / H / X / U | A / N / H / U |
+| Confidence     | N                 | N             |
+
 * Structured: [see file](obesity/zcodes.csv)
 
 ### Substance Abuse
@@ -41,12 +59,12 @@ Steps:
 
 #### Output
 
-| Variable       | Substance Abuse |
-|----------------|-----------------|
-| Feature        | C0740858        |
-| FE_CodeType    | UC              |
-| Feature_Status | A / N           |
-| Confidence     | N               |
+| Variable       | Substance Abuse   | FH: Substance Abuse |
+|----------------|-------------------|---------------------|
+| Feature        | C0740858          | C1397159            |
+| FE_CodeType    | UC                | UC                  |
+| Feature_Status | A / N / H / X / U | A / N / H / U       |
+| Confidence     | N                 | N                   |
 
 ### Anaphylaxis
 
@@ -62,8 +80,8 @@ the [Sentinel Scalable NLP repo](https://github.com/kpwhri/Sentinel-Scalable-NLP
 |----------------|-------------|
 | Feature        | C0002792    |
 | FE_CodeType    | UC          |
-| Feature_Status | A           |
-| Confidence     | N / ?       |
+| Feature_Status | A / U       |
+| Confidence     | N           |
 
 ### History of Suicide Attempt
 
@@ -86,7 +104,7 @@ Steps:
 |----------------|--------------------|
 | Feature        | C0455507           |
 | FE_CodeType    | UC                 |
-| Feature_Status | A / N / X          |
+| Feature_Status | A / N / X / U      |
 | Confidence     | N                  |
 
 ### Smoking Status
@@ -104,12 +122,12 @@ Steps:
 
 #### Output
 
-| Variable       | Smoker    | Never    |
-|----------------|-----------|----------|
-| Feature        | C0337664  | C0337672 |
-| FE_CodeType    | UC        | UC       |
-| Feature_Status | A / N / H | A        |
-| Confidence     | N         | N        |
+| Variable       | Smoker        | Never    |
+|----------------|---------------|----------|
+| Feature        | C0337664      | C0337672 |
+| FE_CodeType    | UC            | UC       |
+| Feature_Status | A / N / H / U | A / U    |
+| Confidence     | N             | N        |
 
 ## Footnotes
 
