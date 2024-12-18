@@ -68,7 +68,7 @@ Steps:
 
 ### Anaphylaxis
 
-Using Phenorm to identify anaphylaxis cases. For more details, including Phenorm post-processing to the FE table,
+Using Phenorm to identify anaphylaxis cases. If a model has not been trained at your particular site, use the aggregate model with a cutoff of >= 0.5. For more details, including Phenorm post-processing to the FE table,
 see [README](anaphylaxis/README.md).
 
 The original work for this algorithm is at
