@@ -18,7 +18,7 @@ The [`phenorm_predict` repo](https://github.com/kpwhri/phenorm_predict) will pro
 
 ### Model Interpretation
 
-To get the appropriate interpretation, you will need a particular model along with a selected cutoff:
+To get the appropriate interpretation, you will need a particular model along with a selected cutoff. You can get the [model file in the current folder](phenorm_model.rds).
 
 The predicted probabilities dataset should have following variables:
 * `Obs_ID`: observation/event id (e.g., studyid + index)
