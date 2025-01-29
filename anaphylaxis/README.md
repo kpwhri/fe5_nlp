@@ -7,7 +7,7 @@
   * Process the corpus output by `04_Clinical_Text_for_NLP.sas` with `mml_utils` using [configuration files](https://github.com/kpwhri/Sentinel-Scalable-NLP/Prediction-Modeling/Anaphylaxis/NLP/configs)
     * A step-by-step guide is provided in the [`mml_utils` documentation](https://github.com/kpwhri/mml_utils/tree/master/examples/phenorm)
   * Run PheNorm using the [R code](https://github.com/kpwhri/Sentinel-Scalable-NLP/Prediction-Modeling/)
-    * If you are only applying the model, consider using the [Phenorm Predict repository](https://github.com/kpwhri/phenorm_predict) which contains only the necessary scripts to run an existing model.
+    * If you are only applying the model, consider using the [Phenorm Predict repository](https://github.com/kpwhri/phenorm_predict) which contains only the necessary scripts to run an existing model. (You will still need to build the model from the Sentinel Scalable NLP repo)
 
 ### `phenorm_predict`
 
@@ -18,7 +18,7 @@ The [`phenorm_predict` repo](https://github.com/kpwhri/phenorm_predict) will pro
 
 ### Model Interpretation
 
-To get the appropriate interpretation, you will need a particular model along with a selected cutoff. You can get the [model file in the current folder](phenorm_model.rds).
+To get the appropriate interpretation, you will need a particular model along with a selected cutoff (if unsure, default to 0.5 as cutoff).
 
 The predicted probabilities dataset should have following variables:
 * `Obs_ID`: observation/event id (e.g., studyid + index)
