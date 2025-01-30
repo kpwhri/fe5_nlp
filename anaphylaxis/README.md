@@ -3,7 +3,7 @@
 ## Steps
 
 * Follow the steps described in [Sentinel Scalable NLP repo](https://github.com/kpwhri/Sentinel-Scalable-NLP?tab=readme-ov-file#prediction-modeling-quick-start):
-  * Create the Anaphylaxis Cohort using [SAS code](https://github.com/kpwhri/Sentinel-Scalable-NLP/High-Sensitivity-Filter/Programs)
+  * Create the Anaphylaxis Cohort using [SAS code](https://github.com/kpwhri/Sentinel-Scalable-NLP/tree/master/High-Sensitivity-Filter/Programs)
   * Process the corpus output by `04_Clinical_Text_for_NLP.sas` with `mml_utils` using [configuration files](https://github.com/kpwhri/Sentinel-Scalable-NLP/Prediction-Modeling/Anaphylaxis/NLP/configs)
     * A step-by-step guide is provided in the [`mml_utils` documentation](https://github.com/kpwhri/mml_utils/tree/master/examples/phenorm)
   * Run PheNorm using the [R code](https://github.com/kpwhri/Sentinel-Scalable-NLP/Prediction-Modeling/)
