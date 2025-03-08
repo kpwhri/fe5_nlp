@@ -122,12 +122,12 @@ Steps:
 
 #### Output
 
-| Variable       | Smoker        | Never    |
-|----------------|---------------|----------|
-| Feature        | C0337664      | C0337672 |
-| FE_CodeType    | UC            | UC       |
-| Feature_Status | A / N / H / U | A / U    |
-| Confidence     | N             | N        |
+| Variable       | Smoker        | Never        |
+|----------------|---------------|--------------|
+| Feature        | C0337664      | C0337672     |
+| FE_CodeType    | UC            | UC           |
+| Feature_Status | A / N / H / U | A / N / U    |
+| Confidence     | N             | N            |
 
 ## Footnotes
 
